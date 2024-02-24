@@ -9,10 +9,10 @@
             new Book(3, "ISBN 12312-31233", "B. Kernighan, D. Ritchie", "C Programming Language")
         };
 
-        public Book[] GetAllByTitleOrAuthor(string titlePart)
+        public Book[] GetAllByTitleOrAuthor(string query)
         {
-            return books.Where(book => book.Title.Contains(titlePart) || 
-                                       book.Author.Contains(titlePart))
+            return books.Where(book => book.Title.Contains(query) || 
+                                       book.Author.Contains(query))
                         .ToArray();
         }
 
