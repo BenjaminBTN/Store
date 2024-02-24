@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Memory", "infrastruct
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "presentation", "presentation", "{144F8661-D0C2-4EBA-B732-DA13EB5A5344}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Web", "presentation\Store.Web\Store.Web.csproj", "{FC535DAA-EFB0-41F8-8471-BD8C716E54DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Web", "presentation\Store.Web\Store.Web.csproj", "{FC535DAA-EFB0-41F8-8471-BD8C716E54DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Tests", "domain\Store.Tests\Store.Tests.csproj", "{6F943F39-6196-4206-8BD2-19C2980962D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{FC535DAA-EFB0-41F8-8471-BD8C716E54DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC535DAA-EFB0-41F8-8471-BD8C716E54DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC535DAA-EFB0-41F8-8471-BD8C716E54DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F943F39-6196-4206-8BD2-19C2980962D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F943F39-6196-4206-8BD2-19C2980962D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F943F39-6196-4206-8BD2-19C2980962D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F943F39-6196-4206-8BD2-19C2980962D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{4848431C-8B5C-4271-8434-6085A817C97D} = {1D7BBBCC-FC49-4974-AD88-90BCE088EAB5}
 		{1C063C4F-011E-472D-83DA-F862A6BD205D} = {B10F8813-6544-4F10-ADD5-4278ADD5B762}
 		{FC535DAA-EFB0-41F8-8471-BD8C716E54DE} = {144F8661-D0C2-4EBA-B732-DA13EB5A5344}
+		{6F943F39-6196-4206-8BD2-19C2980962D7} = {1D7BBBCC-FC49-4974-AD88-90BCE088EAB5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F27A1713-5B7B-482B-B7E3-65E75B55157A}
