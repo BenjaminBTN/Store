@@ -10,12 +10,29 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-white">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">Интернет-магазин книг</a>
-            <form class="row" action="@Url.Action("Index", "Search")" method="get">
-                <input class="col w-auto" type="search" name="query" placeholder="автор или название" />
-                <button class=" col btn btn-outline-success my-2 my-sm-0" type="submit">Искать</button>
-            </form>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-action="Index" asp-controller="Home">Интернет-магазин книг</a>
+                <form class="d-flex w-50" action="@Url.Action("Index", "Search")" method="get">
+                    <input class="form-control me-2" type="search" name="query" placeholder="автор или название">
+                    <button class="btn btn-outline-success" type="submit">Искать</button>
+                </form>
+                <span class="navbar-text">
+                    @{
+                        CartViewModel cart;
+
+                        if(!Context.Session.TryGetCart(out cart))
+                        {
+                            cart = new CartViewModel();
+                            @:Корзина пуста
+                        }
+                        else
+                        {
+                            @:Товаров @cart.Items.Count на сумму @cart.Amount
+                        }
+                    }
+                </span>
+            </div>
         </nav>
     </header>
 
