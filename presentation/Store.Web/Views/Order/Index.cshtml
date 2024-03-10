@@ -1,0 +1,38 @@
+﻿@model OrderModel
+
+@{
+    ViewData["Title"] = "Корзина";
+}
+
+<h1>Корзина</h1>
+
+<table class="table table-striped">
+    <thead class="bg-dark text-light">
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Автор</th>
+            <th scope="col">Название</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(int i = 1; i < Model.Items.Length + 1; i++)
+        {
+            <tr>
+                <td class="text-center">@i</td>
+                <td class="text-center">@Model.Items[i-1].Author</td>
+                <td class="text-center">@Model.Items[i-1].Title</td>
+                <td class="text-center">@Model.Items[i-1].Count</td>
+                <td class="text-center">@Model.Items[i-1].Price</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-end">Итого</td>
+            <td class="text-center">@Model.TotalCount</td>
+            <td class="text-center">@Model.TotalPrice</td>
+        </tr>
+    </tfoot>
+</table>
