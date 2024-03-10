@@ -11,8 +11,10 @@ namespace Store.Web
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddSingleton<IBookRepository, BookRepository>();
+            builder.Services.AddSingleton<IOrderRepository, OrderRepository>();
             builder.Services.AddSingleton<BookService>();
             builder.Services.AddDistributedMemoryCache();
+
             builder.Services.AddSession(options => {
                 options.IdleTimeout = TimeSpan.FromMinutes(20);
                 options.Cookie.HttpOnly = true;

@@ -19,16 +19,15 @@
                 </form>
                 <span class="navbar-text">
                     @{
-                        CartViewModel cart;
+                        CartModel cart;
 
-                        if(!Context.Session.TryGetCart(out cart))
+                        if(Context.Session.TryGetCart(out cart) && cart.TotalCount > 0)
                         {
-                            cart = new CartViewModel();
-                            @:Корзина пуста
+                            <a href="">Товаров @cart.TotalCount на сумму @cart.TotalPrice</a>
                         }
                         else
                         {
-                            @:Товаров @cart.Items.Count на сумму @cart.Amount
+                            @:Корзина пуста
                         }
                     }
                 </span>
