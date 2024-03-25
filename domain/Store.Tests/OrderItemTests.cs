@@ -32,5 +32,23 @@ namespace Store.Tests
             Assert.Equal(1, item.BookId);
             Assert.Equal(3m, item.Price);
         }
+
+        [Fact]
+        public void SetItemCount_WithCorrectValue_SetsCount()
+        {
+            var item = new OrderItem(1, 1, 1m);
+            item.Count = 4;
+
+            Assert.Equal(4, item.Count);
+        }
+
+        [Fact]
+        public void SetItemCount_WithIncorrectValue_ThrowEx()
+        {
+            var item = new OrderItem(1, 1, 1m);
+            var count = -1;
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => item.Count = count);
+        }
     }
 }

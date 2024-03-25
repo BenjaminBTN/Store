@@ -9,7 +9,7 @@ namespace Store.Tests
     public class OrderTests
     {
         [Fact]
-        public void Order_WithNullItems_ThrowEx ()
+        public void Order_WithNullItems_ThrowsEx ()
         {
             Assert.Throws<ArgumentNullException>(() => new Order(1, null));
         }
@@ -54,6 +54,102 @@ namespace Store.Tests
             });
 
             Assert.Equal((2 * 10) + (3 * 50), order.TotalPrice);
+        }
+
+        [Fact]
+        public void GetItem_WithExistingItem_ReturnsItem()
+        {
+            Order order = new(1, new[]
+            {
+                new OrderItem(1, 1, 3m),
+                new OrderItem(3, 2, 2m)
+            });
+
+            Assert.Equal(2m, order.GetItem(3).Price);
+        }
+
+        [Fact]
+        public void GetItem_WithNonExistingItem_ThrowsEx()
+        {
+            Order order = new(1, new[]
+            {
+                new OrderItem(1, 1, 3m),
+                new OrderItem(3, 2, 2m)
+            });
+
+            Assert.Throws<InvalidOperationException>(() =>  order.GetItem(2));
+        }
+
+        [Fact]
+        public void AddOrUpdateItem_WithNull_ThrowsEx()
+        {
+            Order order = new(1, new[]
+            {
+                new OrderItem (1, 3, 3m),
+                new (2, 5, 4m)
+            });
+
+            Book book = null;
+
+            Assert.Throws<ArgumentNullException>(() => order.AddOrUpdateItem(book, 1));
+        }
+
+        [Fact]
+        public void AddOrUpdateItem_WithNonExistingItem_AddNewItem()
+        {
+            Order order = new(1, new[]
+            {
+                new OrderItem (1, 3, 3m),
+                new (2, 5, 4m)
+            });
+
+            Book book = new Book(3, "isbn", "author", "title", "des", 8m);
+
+            order.AddOrUpdateItem(book, 1);
+
+            Assert.Equal(8m, order.GetItem(3).Price);
+        }
+
+        [Fact]
+        public void AddOrUpdateItem_WithExistingItem_IncreaseCount()
+        {
+            Order order = new(1, new[]
+            {
+                new OrderItem (1, 3, 3m),
+                new (2, 5, 4m)
+            });
+
+            Book book = new Book(1, "isbn", "author", "title", "des", 0m);
+
+            order.AddOrUpdateItem(book, 1);
+
+            Assert.Equal(4, order.GetItem(1).Count);
+        }
+
+        [Fact]
+        public void RemoveItem_WithExistingItem_RemovesItem()
+        {
+            Order order = new(1, new[]
+            {
+                new OrderItem (1, 3, 3m),
+                new (2, 5, 4m)
+            });
+
+            order.RemoveItem(2);
+
+            Assert.Throws<InvalidOperationException>(() => order.GetItem(2));
+        }
+
+        [Fact]
+        public void RemoveItem_WithNonExistingItem_ThrowsEx()
+        {
+            Order order = new(1, new[]
+            {
+                new OrderItem (1, 3, 3m),
+                new (2, 5, 4m)
+            });
+
+            Assert.Throws<InvalidOperationException>(() => order.RemoveItem(3));
         }
     }
 }
