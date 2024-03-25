@@ -9,11 +9,12 @@
 <table class="table table-striped">
     <thead class="bg-dark text-light">
         <tr>
-            <th scope="col">№</th>
-            <th scope="col">Автор</th>
-            <th scope="col">Название</th>
-            <th scope="col">Количество</th>
-            <th scope="col">Цена</th>
+            <th scope="col" class="text-center">№</th>
+            <th scope="col" class="text-center">Автор</th>
+            <th scope="col" class="text-center">Название</th>
+            <th scope="col" class="text-center">Количество</th>
+            <th scope="col" class="text-center">Цена</th>
+            <th scope="col" class="text-center"></th>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +26,12 @@
                 <td class="text-center">@Model.Items[i-1].Title</td>
                 <td class="text-center">@Model.Items[i-1].Count</td>
                 <td class="text-center">@Model.Items[i-1].Price</td>
+                <td>
+                    <form action="@Url.Action("RemoveItem", "Order")" method="post">
+                        <input type="hidden" name="bookId" value="@Model.Items[i-1].BookId" />
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
