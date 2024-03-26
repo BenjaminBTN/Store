@@ -10,18 +10,33 @@ namespace Store
     {
         public int BookId { get; }
 
-        public int Count { get; }
+        private int count;
+
+        public int Count 
+        {
+            get { return count; }
+            set
+            {
+                ValidateCount(value);
+                count = value;
+            }
+        }
 
         public decimal Price { get; }
 
-        public OrderItem(int bookId, int count, decimal price) 
+        public OrderItem(int bookId, int count, decimal price)
         {
-            if(count <= 0)
-                throw new ArgumentOutOfRangeException(nameof(count));
+            ValidateCount(count);
 
             BookId = bookId;
             Count = count;
             Price = price;
+        }
+
+        private static void ValidateCount(int count)
+        {
+            if(count <= 0)
+                throw new ArgumentOutOfRangeException(nameof(count));
         }
     }
 }
